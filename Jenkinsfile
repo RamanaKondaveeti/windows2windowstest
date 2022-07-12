@@ -28,12 +28,26 @@ pipeline {
 					sh "export GIT_BRANCH=$GIT_BRANCH"
 				}
 			}
-		}  
-
+		}
+       stage('Dependencies') {
+              steps {  
+		      sh "pwd"
+		      sh 'ls /root/android-sdk'
+                sh 'ls /root/android-sdk/cmdline-tools'
+		     
+                
+                sh 'export ANDROID_HOME=/root/android-sdk/cmdline-tools'
+                sh 'export PATH=$PATH:$ANDROID_HOME/cmdline-tools/tools/bin'
+                sh 'export PATH=$PATH:$ANDROID_HOME/platform-tools'
+                sh 'echo $ANDROID_HOME'
+		      
+              
+        }  
+       }
         stage('Build') {
             steps {
                 sh "chmod +x gradlew"
-                sh './gradlew build --no-daemon -stacktrace'
+                sh './gradlew build'
             }
          }
 
@@ -71,28 +85,4 @@ pipeline {
 	        }
 	}
 }
-
-
-	
-
-
-
-
-
-
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
 
