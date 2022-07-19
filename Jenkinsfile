@@ -53,17 +53,17 @@ pipeline {
          }
          
 
-       //  stage('Frontend Static Code Analysis') {
-         //   steps {
-           //     script {
-             //       try {
-               //         sh './gradlew tslint --no-daemon'
-                 //   } finally { //Make checkstyle results available
-                   //     checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'publicapi/frontend/tslint-result.xml', unHealthy: ''
-                   // }
-              //  }
-         //   }
-       // }
+         stage('Frontend Static Code Analysis') {
+            steps {
+                script {
+                    try {
+                        sh './gradlew tslint --no-daemon'
+                    } finally { //Make checkstyle results available
+                      checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'publicapi/frontend/tslint-result.xml', unHealthy: ''
+              }
+            }
+            }
+        }
      //   stage('End 2 End Tests') {
        //     steps {
          //       script {
