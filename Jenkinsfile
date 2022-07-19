@@ -84,27 +84,19 @@ pipeline {
 
        }
 
-        stage ('Declarative Post Options') {
-            steps {
-                script {
-                    echo 'Sending Post Build Notifications'
-                }
-            }   
-            
-	        }
-	}
-  post {
-	    success {
-	        script {
+	 }
+     post {
+	        success {
+	          script {
 	            echo 'Build completed'
               // We can add SMTP server details where we can send the email notifications once build is success
 	            echo 'Sending email Notification...'
 	         
 	 
+	          }
 	        }
-	    }
-	    failure {
-	        script {
+	         failure {
+	          script {
 	            echo 'Build failed!!'
 	            echo 'Sending email Notification...'
 	          
