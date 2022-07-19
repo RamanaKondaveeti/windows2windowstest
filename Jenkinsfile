@@ -82,7 +82,8 @@ pipeline {
         steps {
           script {
             echo "Renaming file and copying apk"
-              sh 'cp /var/lib/jenkins/workspace/RecruitmentApp/app/build/outputs/apk/debug/*.apk /var/lib/jenkins/workspace/apkbackups'
+            // sh 'cp /var/lib/jenkins/workspace/RecruitmentApp/app/build/outputs/apk/debug/*.apk /var/lib/jenkins/workspace/apkbackups'
+            fileOperations([fileCopyOperation(excludes: '', flattenFiles: false, includes: '/RecruitmentApp/app/build/outputs/apk/release/*.apk', renameFiles: true, sourceCaptureExpression: '*/.apk', targetLocation: '/var/lib/jenkins/workspace/apkbackups', targetNameExpression: '$1.apk')])
 
           }
         }
