@@ -24,7 +24,7 @@ pipeline {
 			steps {
 				script {
 					GIT_BRANCH=sh(returnStdout: true, script: 'git symbolic-ref --short HEAD').trim()
-					currentBuild.setDisplayName("RecruitmentApp- #${currentBuild.number} [" + GIT_BRANCH + "]")
+					currentBuild.setDisplayName("AndroidApp- #${currentBuild.number} [" + GIT_BRANCH + "]")
 					sh "export GIT_BRANCH=$GIT_BRANCH"
 				}
 			}
