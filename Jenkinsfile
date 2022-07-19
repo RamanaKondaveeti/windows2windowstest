@@ -24,7 +24,7 @@ pipeline {
 			steps {
 				script {
 					GIT_BRANCH=sh(returnStdout: true, script: 'git symbolic-ref --short HEAD').trim()
-					currentBuild.setDisplayName("#${currentBuild.number} [" + GIT_BRANCH + "]")
+					currentBuild.setDisplayName("RecruitmentApp- #${currentBuild.number} [" + GIT_BRANCH + "]")
 					sh "export GIT_BRANCH=$GIT_BRANCH"
 				}
 			}
@@ -86,6 +86,7 @@ pipeline {
 	    success {
 	        script {
 	            echo 'Build completed'
+              // We can add SMTP server details where we can send the email notifications once build is success
 	            echo 'Sending email Notification...'
 	         
 	 
