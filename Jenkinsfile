@@ -71,7 +71,7 @@ pipeline {
             echo "Copying apk as a backup"
              sh 'cp /var/lib/jenkins/workspace/RecruitmentApp/app/build/outputs/apk/debug/*.apk /var/lib/jenkins/workspace/apkbackups'
              sh 'cd /var/lib/jenkins/workspace/apkbackups'
-             sh 'mv *.apk buildnumber.apk'
+             sh 'mv app-debug.apk buildnumber.apk'
           }
         }
 
