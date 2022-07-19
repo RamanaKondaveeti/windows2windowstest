@@ -43,16 +43,15 @@ pipeline {
                 sh 'export PATH=$PATH:$ANDROID_HOME/cmdline-tools/tools/bin'
                 sh 'export PATH=$PATH:$ANDROID_HOME/platform-tools'
                 sh 'echo $ANDROID_HOME'
-		      
-              
-        }  
-       }
+		        }  
+          }
         stage('Build') {
             steps {
                 sh "chmod +x gradlew"
                 sh './gradlew build'
             }
          }
+         
 
        //  stage('Frontend Static Code Analysis') {
          //   steps {
@@ -82,7 +81,8 @@ pipeline {
         steps {
           script {
             echo "Renaming file and copying apk"
-               sh 'cp /var/lib/jenkins/workspace/RecruitmentApp/app/build/outputs/apk/debug/*.apk /var/lib/jenkins/workspace/apkbackups'
+             sh 'cp /var/lib/jenkins/workspace/RecruitmentApp/app/build/outputs/apk/debug/*.apk /var/lib/jenkins/workspace/apkbackups'
+             echo $BUILD_NUMBER 
 
           }
         }
