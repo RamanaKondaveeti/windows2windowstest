@@ -65,12 +65,13 @@ pipeline {
            // }
        // } 
 
-       stage ('Custom Name for apk'){
+       stage ('Backup apk'){
         steps {
           script {
             echo "Copying apk as a backup"
              sh 'cp /var/lib/jenkins/workspace/RecruitmentApp/app/build/outputs/apk/debug/*.apk /var/lib/jenkins/workspace/apkbackups'
-            
+             sh 'cd /var/lib/jenkins/workspace/apkbackups'
+             sh 'mv *.apk buildnumber.apk'
           }
         }
 
