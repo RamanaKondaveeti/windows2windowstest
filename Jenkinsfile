@@ -73,6 +73,16 @@ pipeline {
            // }
        // } 
 
+       stage ('Custom Name for apk'){
+        steps {
+          script {
+            echo "Renaming file and copying apk"
+
+          }
+        }
+
+       }
+
         stage ('Declarative Post Options') {
             steps {
                 script {
