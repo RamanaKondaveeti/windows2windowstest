@@ -34,9 +34,7 @@ pipeline {
 		      sh "pwd"
 		      sh 'ls /root/android-sdk'
                 sh 'ls /root/android-sdk/cmdline-tools'
-		     
-                
-                sh 'export ANDROID_HOME=/root/android-sdk/cmdline-tools'
+		            sh 'export ANDROID_HOME=/root/android-sdk/cmdline-tools'
                 sh 'export PATH=$PATH:$ANDROID_HOME/cmdline-tools/tools/bin'
                 sh 'export PATH=$PATH:$ANDROID_HOME/platform-tools'
                 sh 'echo $ANDROID_HOME'
@@ -83,6 +81,24 @@ pipeline {
             }   
             
 	        }
+	}
+  post {
+	    success {
+	        script {
+	            echo 'Build completed'
+	            echo 'Sending email Notification...'
+	         
+	 
+	        }
+	    }
+	    failure {
+	        script {
+	            echo 'Build failed!!'
+	            echo 'Sending email Notification...'
+	          
+	 
+	        }
+	    }
 	}
 }
 
