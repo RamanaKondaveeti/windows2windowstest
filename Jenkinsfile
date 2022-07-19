@@ -80,10 +80,9 @@ pipeline {
        stage ('Custom Name for apk'){
         steps {
           script {
-            echo "Renaming file and copying apk"
+            echo "Copying apk as a backup"
              sh 'cp /var/lib/jenkins/workspace/RecruitmentApp/app/build/outputs/apk/debug/*.apk /var/lib/jenkins/workspace/apkbackups'
-             echo $BUILD_NUMBER 
-
+            
           }
         }
 
