@@ -77,7 +77,7 @@ pipeline {
         steps {
           script {
             echo "Renaming file and copying apk"
-            sh 'cp /var/lib/jenkins/workspace/RecruitmentApp/app/build/outputs/apk/debug/*.apk /var/lib/jenkins/workspace/RecruitmentApp'
+              sh 'cp /var/lib/jenkins/workspace/RecruitmentApp/app/build/outputs/apk/debug/*.apk /var/lib/jenkins/workspace/apkbackups'
 
           }
         }
