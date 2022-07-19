@@ -1,5 +1,7 @@
-def now = new Date()
-def filename = now.format("backup-$BUILD_NUMBER-yyyyMMddHHmm")
+def project_folder = "RecruitmentApp"
+def app_name = 'RecruitmentApp'
+def Version_Number = "0.0.1.$BUILD_NUMBER"
+def final_file_name = "$Job_Name.$Version_Number" //final file name 
 
 pipeline {
 
@@ -80,7 +82,7 @@ pipeline {
         steps {
           script {
             echo "Renaming file and copying apk"
-              sh 'cp /var/lib/jenkins/workspace/RecruitmentApp/app/build/outputs/apk/debug/*.apk /var/lib/jenkins/workspace/apkbackups':{filename}
+              sh 'cp /var/lib/jenkins/workspace/RecruitmentApp/app/build/outputs/apk/debug/*.apk /var/lib/jenkins/workspace/apkbackups'
 
           }
         }
