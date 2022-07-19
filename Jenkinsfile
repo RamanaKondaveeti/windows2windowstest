@@ -1,3 +1,6 @@
+def now = new Date()
+def filename = now.format("backup-$BUILD_NUMBER-yyyyMMddHHmm")
+
 pipeline {
 
     agent any 
@@ -77,7 +80,7 @@ pipeline {
         steps {
           script {
             echo "Renaming file and copying apk"
-              sh 'cp /var/lib/jenkins/workspace/RecruitmentApp/app/build/outputs/apk/debug/*.apk /var/lib/jenkins/workspace/apkbackups'
+              sh 'cp /var/lib/jenkins/workspace/RecruitmentApp/app/build/outputs/apk/debug/*.apk /var/lib/jenkins/workspace/apkbackups':{filename}
 
           }
         }
