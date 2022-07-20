@@ -74,6 +74,7 @@ pipeline {
             // sh 'cd /var/lib/jenkins/workspace/apkbackups'
            //  sh 'mv app-debug.apk buildnumber.apk'
            echo "Build number is ${currentBuild.number}"
+           echo "Job name is ${JOB_NAME}"
           }
         }
 
