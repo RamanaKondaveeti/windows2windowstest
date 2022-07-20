@@ -1,4 +1,4 @@
-def project_folder = "var/lib/jenkins/workspace/RecruitmentApp/app/build/outputs/apk/debug/"
+def project_folder = "/var/lib/jenkins/workspace/RecruitmentApp/app/build/outputs/apk/debug"
 def app_name = 'RecruitmentApp'
 def Version_Number = "0.0.1.$BUILD_NUMBER"
 def final_file_name = "$Job_Name.$Version_Number" //final file name 
