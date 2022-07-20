@@ -69,7 +69,7 @@ pipeline {
         steps {
           script {
             echo "Copying apk as a backup"
-             sh "cp $project_folder/*.apk /var/lib/jenkins/workspace/apkbackups"
+             sh "cp ${project_folder}*.apk /var/lib/jenkins/workspace/apkbackups"
             // sh 'cd /var/lib/jenkins/workspace/apkbackups'
            //  sh 'mv app-debug.apk buildnumber.apk'
           }
