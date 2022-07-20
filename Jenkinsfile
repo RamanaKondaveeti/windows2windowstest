@@ -71,8 +71,8 @@ pipeline {
           script {
             echo "Copying apk as a backup"
                 sh "cp ${project_folder}/*.apk ${backup_folder}"
-            // sh 'cd /var/lib/jenkins/workspace/apkbackups'
-                sh "mv ${backup_folder}/*.apk ${backup_folder}/${JOB_NAME}_${currentBuild.number}.apk"
+            echo "Renaming apk file with App and Build Number"
+                sh "mv ${project_folder}/*.apk ${backup_folder}/${JOB_NAME}_${currentBuild.number}.apk"
             echo "Build number is ${currentBuild.number}"
             echo "Job name is ${JOB_NAME}"
           }
