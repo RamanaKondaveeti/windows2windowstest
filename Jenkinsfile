@@ -1,7 +1,8 @@
 def project_folder = "/var/lib/jenkins/workspace/RecruitmentApp/app/build/outputs/apk/debug"
 def app_name = 'RecruitmentApp'
+def backup_folder = '/var/lib/jenkins/workspace/apkbackups'
 def Version_Number = "0.0.1.$BUILD_NUMBER"
-def final_file_name = "$Job_Name.$Version_Number" //final file name 
+def backup_file_name = "$Job_Name.$Version_Number" //final file name 
 
 pipeline {
 
@@ -69,7 +70,7 @@ pipeline {
         steps {
           script {
             echo "Copying apk as a backup"
-             sh "cp ${project_folder}/*.apk /var/lib/jenkins/workspace/apkbackups"
+             sh "cp ${project_folder}/*.apk ${backup_folder}"
             // sh 'cd /var/lib/jenkins/workspace/apkbackups'
            //  sh 'mv app-debug.apk buildnumber.apk'
           }
