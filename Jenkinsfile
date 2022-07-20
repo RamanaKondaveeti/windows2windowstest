@@ -73,6 +73,7 @@ pipeline {
              sh "cp ${project_folder}/*.apk ${backup_folder}"
             // sh 'cd /var/lib/jenkins/workspace/apkbackups'
            //  sh 'mv app-debug.apk buildnumber.apk'
+           echo "Build number is ${currentBuild.number}"
           }
         }
 
