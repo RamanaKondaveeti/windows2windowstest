@@ -78,7 +78,7 @@ pipeline {
         steps {
           // Moving the generated apk file to our Deployment Server which runs on WINDOWS
           echo "Copying apk to WINDOWS Server"
-          sh "scp ${project_folder}/*apk Administrator@3.14.72.153:/C:/Users/Administrator/Downloads/RecruitmentApp/Version1"
+        //  sh "mount -t cifs -o username=Administrator //172.31.46.59/Users/Administrator/Downloads/RecruitmentApp/Version1 /var/lib/jenkins/workspace/apkbackups/"
         }
        }
 
