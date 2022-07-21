@@ -63,7 +63,7 @@ pipeline {
             script {
             // Copy the generated apk file to a backup folder
               echo "Copying apk as a backup"
-                sh "cp ${project_folder}/*.apk ${backup_folder}"
+                sh "cp -r ${project_folder}/*.apk ${backup_folder}"
             // Renaming apk file with app and build number    
               echo "Renaming apk file with App and Build Number"
                 sh "mv ${project_folder}/*.apk ${backup_folder}/${JOB_NAME}_${currentBuild.number}.apk"
