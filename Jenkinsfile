@@ -10,7 +10,7 @@ pipeline {
    environment {
 //PATH = "/opt/apache-maven-3.8.6/bin/:$PATH"
 //PATH = "/opt/gradle/gradle-7.5-rc-4/bin/:$PATH"
-    PATH = "/opt/gradle/gradle-7.4.2:$PATH"
+    PATH = "/opt/gradle/gradle-5.0:$PATH"
    }
 
      options {
