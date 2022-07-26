@@ -31,9 +31,7 @@ pipeline {
 		}
        stage('Dependencies') {
               steps {  
-		      sh "pwd"
-		      sh 'ls /root/android-sdk'
-                sh 'ls /root/android-sdk/cmdline-tools'
+		      
 		            sh 'export ANDROID_HOME=/var/lib/jenkins/android-sdk/cmdline-tools'
                 sh 'export PATH=$PATH:$ANDROID_HOME/tools/bin'
                 sh'export PATH=$PATH:$ANDROID_HOME/platform-tools'
