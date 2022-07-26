@@ -36,6 +36,7 @@ pipeline {
                 sh 'export PATH=$PATH:$ANDROID_HOME/tools/bin'
                 sh'export PATH=$PATH:$ANDROID_HOME/platform-tools'
                 sh 'echo $ANDROID_HOME'
+                sh "export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'"
 		      
               
         }  
