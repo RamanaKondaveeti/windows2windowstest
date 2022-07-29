@@ -1,7 +1,7 @@
  def project_folder = "/var/lib/jenkins/workspace/dontnetappweb/hello-world-api/bin/Debug/netcoreapp2.0"
  def JOB_NAME = 'DotnetSample'
  def backup_folder = '/var/lib/jenkins/workspace/webbackups'
- def 
+
 
 pipeline {
 agent any
