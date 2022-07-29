@@ -36,6 +36,14 @@ agent any
                 }
             }
         }
+        stage ('Make a file') {
+            steps {
+                script {
+                    echo "Creating file"
+                    sh "touch ${JOB_NAME}_${currentBuild.number}-$(date +"%d-%m-%Y")"
+                }
+            }
+        }
         stage('Quality Analysis') {
             parallel {
                 // run Sonar Scan and Integration tests in parallel.
