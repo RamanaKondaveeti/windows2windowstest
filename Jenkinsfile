@@ -32,7 +32,7 @@ agent any
             steps {
                 script {
                     echo "Copying project folder to backup folder"
-                    sh "cp -r ${project_folder} ${backup_folder}/${JOB_NAME}_${currentBuild.number}_${date +"%d-%m-%Y"}"
+                    sh "cp -r ${project_folder} ${backup_folder}/${JOB_NAME}_${currentBuild.number}"
                 }
             }
         }
