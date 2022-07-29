@@ -36,11 +36,11 @@ agent any
                 }
             }
         }
-        stage ('Make a file') {
+        stage ('Make a folder') {
             steps {
                 script {
-                    echo "Creating file"
-                    sh "touch ${JOB_NAME}_${currentBuild.number}-$(date +"%d-%m-%Y")"
+                    echo "Creating folder"
+                    sh "mkdir ${backup_folder}/${JOB_NAME}_${currentBuild.number}_$(date +"%d-%m-%Y")"
                 }
             }
         }
