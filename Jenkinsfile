@@ -1,6 +1,7 @@
  def project_folder = "/var/lib/jenkins/workspace/dontnetappweb/hello-world-api/bin/Debug/netcoreapp2.0"
  def JOB_NAME = 'DotnetSample'
-def backup_folder = '/var/lib/jenkins/workspace/webbackups'
+ def backup_folder = '/var/lib/jenkins/workspace/webbackups'
+ def 
 
 pipeline {
 agent any
@@ -31,8 +32,8 @@ agent any
         stage ('Copy proj to backup') {
             steps {
                 script {
-                    echo "Copying project folder to backup folder"
-                    sh "cp -r ${project_folder} ${backup_folder}/${JOB_NAME}_${currentBuild.number}"
+                    def now = new Date()        
+                    println now.format("yyMMdd.HHmm", TimeZone.getTimeZone('UTC'))
                 }
             }
         }
@@ -40,7 +41,7 @@ agent any
             steps {
                 script {
                     echo "Creating folder"
-                    sh "mkdir ${backup_folder}/${JOB_NAME}_${currentBuild.number}_$(date +"%d-%m-%Y")"
+                    sh "mkdir ${backup_folder}/${JOB_NAME}_${currentBuild.number}_${date +"%d-%m-%Y"}"
                 }
             }
         }
