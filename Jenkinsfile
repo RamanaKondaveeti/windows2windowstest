@@ -79,7 +79,7 @@ pipeline {
         steps {
           // Moving the generated apk file to our Deployment Server which runs on WINDOWS
           echo "Copying apk to WINDOWS Server"
-          sh "pscp -pw 'KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV' $finalfile Administrator@3.133.89.186:/Users/Administrator/Downloads/RecruitmentApp/Version1 -o StrictHostKeyChecking=no"
+          sh "pscp -pw 'KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV' ${finalfile} Administrator@3.133.89.186:/Users/Administrator/Downloads/RecruitmentApp/Version1 -o StrictHostKeyChecking=no"
         // password is KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV
         //  sh "mount -t cifs -o username=Administrator //172.31.46.59/Users/Administrator/Downloads/RecruitmentApp/Version1 /var/lib/jenkins/workspace/apkbackups/"
         }
