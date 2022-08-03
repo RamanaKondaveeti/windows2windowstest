@@ -79,9 +79,10 @@ pipeline {
           // Moving the generated apk file to our Deployment Server which runs on WINDOWS
           echo "Copying apk to WINDOWS Server"
           withCredentials([usernamePassword(credentialsId: 'windowspass', passwordVariable: 'KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV', usernameVariable: 'Administrator')])
-            {
-          sh "scp secret.key Administrator@3.133.89.186:C:/Users/Administrator/Downloads/RecruitmentApp/Version1"
-            }
+          echo "$windowspass"
+          //  {
+         // sh "scp secret.key Administrator@3.133.89.186:C:/Users/Administrator/Downloads/RecruitmentApp/Version1"
+          //  }
         // -pw 'MyPa$$word' use this in scp command after scp -pw 'MyPassword'
         // password is KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV
         //  sh "mount -t cifs -o username=Administrator //172.31.46.59/Users/Administrator/Downloads/RecruitmentApp/Version1 /var/lib/jenkins/workspace/apkbackups/"
