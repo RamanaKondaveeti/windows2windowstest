@@ -81,7 +81,8 @@ pipeline {
           echo "Copying apk to WINDOWS Server"
           withCredentials([file(credentialsId: 'wondows_password', variable: 'windows_pass')]) 
           {
-          sh "echo y | pscp -pw 'KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV' ${finalfile} Administrator@3.133.89.186:/Users/Administrator/Downloads/RecruitmentApp/Version1"
+          sh "echo y | pscp  ${finalfile} Administrator@3.133.89.186:/Users/Administrator/Downloads/RecruitmentApp/Version1"
+          // -pw 'KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV'
         //  need to bind this password KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV
         //  sh "mount -t cifs -o username=Administrator //172.31.46.59/Users/Administrator/Downloads/RecruitmentApp/Version1 /var/lib/jenkins/workspace/apkbackups/"
           }
