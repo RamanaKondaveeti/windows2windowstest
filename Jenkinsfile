@@ -11,7 +11,7 @@ pipeline {
 
    environment {
     PATH = "/opt/gradle/gradle-7.4.2:$PATH"
-    def timestamp = "sh (script: "echo `date +%d%m%Y%H%M`", returnStdout: true).trim()"
+    def timestamp = sh (script: "echo `date +%d%m%Y%H%M`", returnStdout: true).trim()
    }
 
      options {
