@@ -3,13 +3,13 @@ def JOB_NAME = 'RecruitmentApp'
 def backup_folder = '/var/lib/jenkins/workspace/webbackups'
 def Version_Number = "0.0.1.$BUILD_NUMBER"
 //def Console_Output_URL = "${JOB_URL}${BUILD_NUMBER}/console"
-def finalfile ="${backup_folder}/${JOB_NAME}_${currentBuild.number}_$timestamp.apk"
+def finalfile ="${backup_folder}/${JOB_NAME}_${currentBuild.number}.apk"
+def timestamp = "sh (script: "echo `date +%d%m%Y%H%M`", returnStdout: true).trim()"
 pipeline {
 
     agent any 
 
    environment {
-    def timestamp = sh(script: "echo `date +%d%m%Y%H%M`", returnStdout: true).trim()
     PATH = "/opt/gradle/gradle-7.4.2:$PATH"
    }
 
@@ -66,7 +66,7 @@ pipeline {
               sh "cp -r ${project_folder}/*.apk ${backup_folder}"
             // Renaming apk file with app and build number    
               echo "Renaming apk file with App and Build Number"
-              sh "mv ${project_folder}/*.apk ${backup_folder}/${JOB_NAME}_${currentBuild.number}__$timestamp.apk"
+              sh "mv ${project_folder}/*.apk ${backup_folder}/${JOB_NAME}_${currentBuild.number}.apk"
               echo "Build number is ${currentBuild.number}"
               echo "Job name is ${JOB_NAME}"
           }
@@ -81,6 +81,7 @@ pipeline {
           sh "echo y | pscp -pw 'KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV' ${finalfile} Administrator@3.133.89.186:/Users/Administrator/Downloads/RecruitmentApp/Version1"
         //  need to bind this password KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV
         //  sh "mount -t cifs -o username=Administrator //172.31.46.59/Users/Administrator/Downloads/RecruitmentApp/Version1 /var/lib/jenkins/workspace/apkbackups/"
+        echo "${timestamp}"
         }
        }
 
