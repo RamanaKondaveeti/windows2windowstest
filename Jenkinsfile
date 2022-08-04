@@ -80,7 +80,7 @@ pipeline {
           // Moving the generated apk file to our Deployment Server which runs on WINDOWS
           echo "Copying apk to WINDOWS Server"
           withCredentials([file(credentialsId: 'wondows_password', variable: 'windows_pass')]) {
-          sh "echo y | pscp -pw ${windows_pass} ${finalfile} Administrator@3.133.89.186:/Users/Administrator/Downloads/RecruitmentApp/Version1"
+          sh "echo y | pscp -pw "${windows_pass}" ${finalfile} Administrator@3.133.89.186:/Users/Administrator/Downloads/RecruitmentApp/Version1"
           echo "My password is '${windows_pass}'!"
           }
           // -pw 'KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV'
