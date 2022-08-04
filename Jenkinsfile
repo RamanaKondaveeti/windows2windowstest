@@ -3,7 +3,7 @@ def JOB_NAME = 'RecruitmentApp'
 def backup_folder = '/var/lib/jenkins/workspace/webbackups'
 def Version_Number = "0.0.1.$BUILD_NUMBER"
 //def Console_Output_URL = "${JOB_URL}${BUILD_NUMBER}/console"
-def finalfile ="${backup_folder}/${JOB_NAME}_${currentBuild.number}_${timestamp}.apk"
+def finalfile ="${backup_folder}/${JOB_NAME}_${currentBuild.number}_$timestamp.apk"
 pipeline {
 
     agent any 
@@ -66,7 +66,7 @@ pipeline {
               sh "cp -r ${project_folder}/*.apk ${backup_folder}"
             // Renaming apk file with app and build number    
               echo "Renaming apk file with App and Build Number"
-              sh "mv ${project_folder}/*.apk ${backup_folder}/${JOB_NAME}_${currentBuild.number}__${timestamp}.apk"
+              sh "mv ${project_folder}/*.apk ${backup_folder}/${JOB_NAME}_${currentBuild.number}__$timestamp.apk"
               echo "Build number is ${currentBuild.number}"
               echo "Job name is ${JOB_NAME}"
           }
