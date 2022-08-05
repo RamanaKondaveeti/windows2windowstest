@@ -38,7 +38,7 @@ pipeline {
        stage('Dependencies') {
             steps {  
 		            sh "pwd"
-		   	    sh 'sudo chmod 775 android-sdk'
+		   	    sh 'chmod 775 android-sdk'
 		            sh 'ls /root/android-sdk'
                 sh 'ls /root/android-sdk/cmdline-tools'
 		            sh 'export ANDROID_HOME=/root/android-sdk/cmdline-tools'
