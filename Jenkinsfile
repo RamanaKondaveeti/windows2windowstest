@@ -38,9 +38,9 @@ pipeline {
        stage('Dependencies') {
             steps {  
 		            sh "pwd"
-		   	    sh 'chmod 775 /root/android-sdk'
-		            sh 'ls /root/android-sdk'
-                sh 'ls /root/android-sdk/cmdline-tools'
+		   	//    sh 'chmod 775 /root/android-sdk'
+		         //   sh 'ls /root/android-sdk'
+            //    sh 'ls /root/android-sdk/cmdline-tools'
 		            sh 'export ANDROID_HOME=/root/android-sdk/cmdline-tools'
                 sh 'export PATH=$PATH:$ANDROID_HOME/cmdline-tools/tools/bin'
                 sh 'export PATH=$PATH:$ANDROID_HOME/platform-tools'
