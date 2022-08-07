@@ -95,7 +95,7 @@ pipeline {
         steps {
           script {
           withCredentials([string(credentialsId: 'windows_password', variable: 'windowspassword')]){
-            sh "sshpass -p '${windowspassword}' ssh Administrator@3.133.89.186 /bin/bash"
+            sh "sshpass -p '${windowspassword}' ssh -vvv Administrator@3.133.89.186 /bin/bash"
         }
        }
     }
