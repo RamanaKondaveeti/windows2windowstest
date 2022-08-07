@@ -97,7 +97,7 @@ pipeline {
             sh 'sshpass -p '${windowspassword}' ssh Administrator@3.133.89.186'
         }
        }
-
+    }
 	 }
      post {
 	        success {
@@ -119,4 +119,4 @@ pipeline {
 	    }
 	}
 }
-}
+
