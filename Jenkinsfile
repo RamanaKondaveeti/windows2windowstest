@@ -103,7 +103,9 @@ pipeline {
         stage ('run cmd on windowss'){
             steps {
                 script {
-                    sh "ssh Administrator@3.133.89.186 'powershell.exe netstat'"
+                  withCredentials([string(credentialsId: 'windows_password', variable: 'windowspassword')]){
+                    sh "sshpass -p '${windowspassword}' ssh -o StrictHostKeyChecking=no Administrator@3.133.89.186 'powershell.exe netstat'"
+                  }
                 } 
             }
         }
