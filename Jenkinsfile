@@ -100,6 +100,13 @@ pipeline {
        }
     }
        }
+        stage ('run cmd on windowss'){
+            steps {
+                script {
+                    sh "ssh Administrator@3.133.89.186 'powershell.exe netstat'"
+                } 
+            }
+        }
 	 }
      post {
 	        success {
