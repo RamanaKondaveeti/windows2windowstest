@@ -1,4 +1,4 @@
-def project_folder = "/var/lib/jenkins/workspace/windows_sshtest/app/build/outputs/apk/debug"
+def project_folder = "/var/lib/jenkins/workspace/RecruitmentApp/app/build/outputs/apk/debug"
 def JOB_NAME = 'RecruitmentApp'
 def backup_folder = '/var/lib/jenkins/workspace/apkbackups'
 def Version_Number = "0.0.1.$BUILD_NUMBER"
@@ -91,15 +91,6 @@ pipeline {
         }
        }
 
-       stage ('Connet to Windows server') {
-        steps {
-          script {
-          withCredentials([string(credentialsId: 'windows_password', variable: 'windowspassword')]){
-            sh "sshpass -p '${windowspassword}' ssh Administrator@3.133.89.186"
-        }
-       }
-    }
-       }
 	 }
      post {
 	        success {
