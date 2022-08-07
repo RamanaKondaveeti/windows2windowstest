@@ -1,6 +1,6 @@
 def project_folder = "/var/lib/jenkins/workspace/windows_sshtest/app/build/outputs/apk/debug"
 def JOB_NAME = 'RecruitmentApp'
-def backup_folder = '/var/lib/jenkins/workspace/webbackups'
+def backup_folder = '/var/lib/jenkins/workspace/apkbackups'
 def Version_Number = "0.0.1.$BUILD_NUMBER"
 //def Console_Output_URL = "${JOB_URL}${BUILD_NUMBER}/console"
 def finalfile ="${backup_folder}/${JOB_NAME}_${currentBuild.number}.apk"
