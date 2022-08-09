@@ -2,6 +2,7 @@ def project_folder = "/var/lib/jenkins/workspace/csvfiletest/app/build/outputs/a
 def JOB_NAME = 'csvfiletest'
 def backup_folder = '/var/lib/jenkins/workspace/apkbackups'
 def Version_Number = "0.0.1.$BUILD_NUMBER"
+def csv_path = "/var/lib/jenkins/workspace/csvfiletest/app"
 //def Console_Output_URL = "${JOB_URL}${BUILD_NUMBER}/console"
 def finalfile ="${backup_folder}/${JOB_NAME}_${currentBuild.number}.apk"
 
@@ -89,11 +90,11 @@ pipeline {
          stage('Parse the CSV') {
           steps {
             script {
-                dir ('app/ip.csv') {
-                    if (fileExists('ip.csv')) {
+                dir ("${csv_path}/ip.csv") {
+                    if (fileExists("${csv_path}/ip.csv")) {
                         echo ' ip.csv found'
 
-                        readFile("app/ip.csv").split('\n').eachLine { line, count ->
+                        readFile("${csv_path}/ip.csv").split('\n').eachLine { line, count ->
                             def fields = line.split(',')
                             for(String item: fields) {
                                 println item
