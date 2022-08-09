@@ -75,6 +75,18 @@ pipeline {
 
        }
 
+       stage ('Read CSV file'){
+            steps {
+                script {
+                    //Reading data from csv file stored in github repo
+                    def inputCSVPath = 'app'
+                    def csvContent = readFile "${inputCSVPath}" 
+                    echo ("CSV FILE PATH IS : ${inputCSVPath}")
+                    echo ("CSV CONTENT IS: ${csvContent}") 
+                }
+            }
+       }
+
        stage ('Deploy to Server') {
         steps {
           // Moving the generated apk file to our Deployment Server which runs on WINDOWS
