@@ -81,11 +81,11 @@ pipeline {
                 script {
                     //Reading data from csv file stored in github repo
                     def inputCSVPath = "${csv_path}/ip.csv"
-                    def csvContent = readFile "${inputCSVPath}.split('\n')" 
+                    def csvContent = readFile "${inputCSVPath}" 
                      if (fileExists("${csv_path}/ip.csv")) {
                         echo 'csv found'
                         echo ("CSV FILE PATH IS : ${inputCSVPath}")
-                        echo ("CSV CONTENT IS: ${csvContent}")
+                        echo ("CSV CONTENT IS: ${csvContent}.split('\n')")
                     } else {
                         echo 'csv Not found.'
                     }
