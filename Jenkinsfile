@@ -85,7 +85,9 @@ pipeline {
                      if (fileExists("${csv_path}/ip.csv")) {
                         echo 'csv found'
                         echo ("CSV FILE PATH IS : ${inputCSVPath}")
-                        echo ("CSV CONTENT IS: ${csvContent}.split('\n')")
+                        echo ("CSV CONTENT IS: ${csvContent}")
+                        assert records[0][0] == 'key'
+                        assert records[1][1] == 'b'
                     } else {
                         echo 'csv Not found.'
                     }
