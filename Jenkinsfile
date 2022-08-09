@@ -1,5 +1,5 @@
-def project_folder = "/var/lib/jenkins/workspace/RecruitmentApp/app/build/outputs/apk/debug"
-def JOB_NAME = 'RecruitmentApp'
+def project_folder = "/var/lib/jenkins/workspace/csvfiletest/app/build/outputs/apk/debug"
+def JOB_NAME = 'csvfiletest'
 def backup_folder = '/var/lib/jenkins/workspace/apkbackups'
 def Version_Number = "0.0.1.$BUILD_NUMBER"
 //def Console_Output_URL = "${JOB_URL}${BUILD_NUMBER}/console"
@@ -22,7 +22,7 @@ pipeline {
 		
         stage ("Clone Repository") {
                 steps {
-                   git branch: 'master', url: 'https://github.com/RamanaKondaveeti/RecruitmentAppAndroidGradle.git'
+                   git branch: 'master', url: 'https://github.com/RamanaKondaveeti/csvfiletest.git'
                 }
             }  
 
