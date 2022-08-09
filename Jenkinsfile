@@ -5,8 +5,6 @@ def Version_Number = "0.0.1.$BUILD_NUMBER"
 def csv_path = "/var/lib/jenkins/workspace/csvfiletest/app"
 //def Console_Output_URL = "${JOB_URL}${BUILD_NUMBER}/console"
 def finalfile ="${backup_folder}/${JOB_NAME}_${currentBuild.number}.apk"
-def inputCSVPath = "${csv_path}/ip.csv"
-def csvContent = readFile "${inputCSVPath}" 
 
 pipeline {
 
@@ -81,6 +79,9 @@ pipeline {
             steps {
                 script {
                 //Reading data from csv file stored in github repo
+                   def inputCSVPath = "${csv_path}/ip.csv"
+                   def csvContent = readFile "${inputCSVPath}.split('\n').each { line -> ... }" 
+                   // .split('\n').each { line -> ... }
                         if (fileExists("${csv_path}/ip.csv")) {
                         echo 'csv found'
                         echo ("CSV FILE PATH IS : ${inputCSVPath}")
@@ -98,10 +99,11 @@ pipeline {
           echo "Copying apk to WINDOWS Server"
           // 
            withCredentials([string(credentialsId: 'windows_password', variable: 'windowspassword')]){
-              sh "echo y | pscp -pw '${windowspassword}' ${finalfile} Administrator@${csvContent}:/Users/Administrator/Downloads/RecruitmentApp/Version1"
+              sh "echo y | pscp -pw '${windowspassword}' ${finalfile} Administrator@3.133.89.186:/Users/Administrator/Downloads/RecruitmentApp/Version1"
               echo "My password is '${windowspassword}'!"
           }
           // -pw 'KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV'
+          //windows ip : 3.133.89.186
           //  sh "mount -t cifs -o username=Administrator //172.31.46.59/Users/Administrator/Downloads/RecruitmentApp/Version1 /var/lib/jenkins/workspace/apkbackups/"
           echo "$timestamp"
         }
