@@ -86,14 +86,13 @@ pipeline {
                         echo 'csv found'
                         echo ("CSV FILE PATH IS : ${inputCSVPath}")
                         echo ("CSV CONTENT IS: ${csvContent}")
-                     else {
+                    } else {
                         echo 'csv Not found.'
                     }
-                     }
+                 }
                }
             }
-       }
-         
+                
        stage ('Deploy to Server') {
         steps {
            // Moving the generated apk file to our Deployment Server which runs on WINDOWS
