@@ -86,17 +86,33 @@ pipeline {
                 }
             }
        }
+         stage('Parse the CSV') {
+          steps {
+            script {
+                dir ('app/ip.csv') {
+                    if (fileExists('ip.csv')) {
+                        echo ' ip.csv found'
 
+                        readFile("ip.csv").eachLine { line, count ->
+                            def fields = line.split(',')
+                            for(String item: fields) {
+                                println item
+                                println ' you are parsing line : ' + count
+                                }
+                                nodes["line${count}"] = {
+                                    node {
+                                        echo fields[0] + ': ' + fields[1] + ': ' + fields[2] + ': ' + fields[3] + ': ' + fields[4];
+                                    }
+                                }
+                    }
+                    } else {
+                        echo ' ip.csv Not found. Failing.'
+                    }
+                }
+            }
        stage ('Deploy to Server') {
         steps {
-            script {
-                    //Reading data from csv file stored in github repo
-                    def inputCSVPath = 'app/ip.csv'
-                    def csvContent = readFile "${inputCSVPath}" 
-                    echo ("CSV FILE PATH IS : ${inputCSVPath}")
-                    echo ("CSV CONTENT IS: ${csvContent}") 
-                }
-          // Moving the generated apk file to our Deployment Server which runs on WINDOWS
+           // Moving the generated apk file to our Deployment Server which runs on WINDOWS
           echo "Copying apk to WINDOWS Server"
           // 
            withCredentials([string(credentialsId: 'windows_password', variable: 'windowspassword')]){
