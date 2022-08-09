@@ -85,16 +85,24 @@ pipeline {
                      if (fileExists("${csv_path}/ip.csv")) {
                         echo 'csv found'
                         echo ("CSV FILE PATH IS : ${inputCSVPath}")
-                        echo ("CSV CONTENT IS: ${csvContent}")
-                        assert records[0][0] == 'key'
-                        assert records[1][1] == 'b'
+                        echo ("CSV CONTENT IS: ${csvContent}").split('\n').each { line, count ->
+                           def fields = line.split(',')
+                            for(String item: fields) {
+                                println item
+                                println ' you are parsing line : ' + count
+                                }
+                                nodes["line${count}"] = {
+                                    node {
+                                        echo fields[0] + ': ' + fields[1] + ': ' + fields[2] + ': ' + fields[3] + ': ' + fields[4];
+                                    }
+                                }
                     } else {
                         echo 'csv Not found.'
                     }
                  }
                }
             }
-                
+       }  
        stage ('Deploy to Server') {
         steps {
            // Moving the generated apk file to our Deployment Server which runs on WINDOWS
