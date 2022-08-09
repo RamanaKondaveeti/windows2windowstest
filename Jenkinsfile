@@ -76,43 +76,24 @@ pipeline {
 
        }
 
-       stage ('Read CSV file'){
+       stage ('Parse CSV file'){
             steps {
                 script {
                     //Reading data from csv file stored in github repo
-                    def inputCSVPath = 'app/ip.csv'
+                    def inputCSVPath = "${csv_path}/ip.csv"
                     def csvContent = readFile "${inputCSVPath}" 
-                    echo ("CSV FILE PATH IS : ${inputCSVPath}")
-                    echo ("CSV CONTENT IS: ${csvContent}") 
-                }
+                     if (fileExists("${csv_path}/ip.csv")) {
+                        echo 'csv found'
+                        echo ("CSV FILE PATH IS : ${inputCSVPath}")
+                        echo ("CSV CONTENT IS: ${csvContent}")
+                     else {
+                        echo 'csv Not found.'
+                    }
+                     }
+               }
             }
        }
-         stage('Parse the CSV') {
-          steps {
-            script {
-                dir ("${csv_path}/ip.csv") {
-                    if (fileExists("${csv_path}/ip.csv")) {
-                        echo ' ip.csv found'
-
-                        readFile("${csv_path}/ip.csv").split('\n').eachLine { line, count ->
-                            def fields = line.split(',')
-                            for(String item: fields) {
-                                println item
-                                println ' you are parsing line : ' + count
-                                }
-                                nodes["line${count}"] = {
-                                    node {
-                                        echo fields[0] + ': ' + fields[1] + ': ' + fields[2] + ': ' + fields[3] + ': ' + fields[4];
-                                    }
-                                }
-                    }
-                    } else {
-                        echo ' ip.csv Not found.'
-                    }
-                }
-            }
-          }
-         }
+         
        stage ('Deploy to Server') {
         steps {
            // Moving the generated apk file to our Deployment Server which runs on WINDOWS
@@ -148,4 +129,4 @@ pipeline {
 	        }
 	    }
 	}
-    }
+}
