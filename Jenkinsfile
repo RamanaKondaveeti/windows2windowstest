@@ -75,25 +75,22 @@ pipeline {
         }
 
        }
-
-       stage ('Parse CSV file'){
+      stage ('Parse CSV file'){
             steps {
-                script {
-                    //Reading data from csv file stored in github repo
+                //Reading data from csv file stored in github repo
                     def inputCSVPath = "${csv_path}/ip.csv"
                     def csvContent = readFile "${inputCSVPath}" 
                      if (fileExists("${csv_path}/ip.csv")) {
                         echo 'csv found'
                         echo ("CSV FILE PATH IS : ${inputCSVPath}")
                         echo ("CSV CONTENT IS: ${csvContent}\n")
-                         else {
+                          else {
                         echo 'csv Not found.'
                     }
                  }
                }
             }
-       }
-      stage ('Deploy to Server') {
+       stage ('Deploy to Server') {
         steps {
            // Moving the generated apk file to our Deployment Server which runs on WINDOWS
           echo "Copying apk to WINDOWS Server"
@@ -107,7 +104,7 @@ pipeline {
           echo "$timestamp"
         }
        }
-
+    
 	 }
      post {
 	        success {
@@ -115,16 +112,12 @@ pipeline {
 	            echo 'Build Completed'
               // We can add SMTP server details where we can send the email notifications once build is success
 	            echo 'Sending email Notification...'
-	         
-	 
 	          }
 	        }
 	         failure {
 	          script {
 	            echo 'Build failed!!'
-	            echo 'Sending email Notification...'
-	          
-	 
+	            echo 'Sending email Notification...' 
 	        }
 	    }
 	}
