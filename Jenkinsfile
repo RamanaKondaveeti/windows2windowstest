@@ -93,7 +93,7 @@ pipeline {
                     if (fileExists('ip.csv')) {
                         echo ' ip.csv found'
 
-                        readFile("ip.csv").eachLine { line, count ->
+                        readFile("app/ip.csv").split('\n').eachLine { line, count ->
                             def fields = line.split(',')
                             for(String item: fields) {
                                 println item
@@ -106,7 +106,7 @@ pipeline {
                                 }
                     }
                     } else {
-                        echo ' ip.csv Not found. Failing.'
+                        echo ' ip.csv Not found.'
                     }
                 }
             }
