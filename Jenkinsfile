@@ -77,6 +77,7 @@ pipeline {
        }
       stage ('Parse CSV file'){
             steps {
+                script {
                 //Reading data from csv file stored in github repo
                     def inputCSVPath = "${csv_path}/ip.csv"
                     def csvContent = readFile "${inputCSVPath}" 
@@ -90,6 +91,7 @@ pipeline {
                     }
                  }
                }
+      } 
        stage ('Deploy to Server') {
         steps {
            // Moving the generated apk file to our Deployment Server which runs on WINDOWS
