@@ -1,6 +1,6 @@
-def project_folder = "/var/lib/jenkins/workspace/windows_sshtest/app/build/outputs/apk/debug"
-def JOB_NAME = 'Windowssshtest'
-def backup_folder = '/var/lib/jenkins/workspace/webbackups'
+def project_folder = "/var/lib/jenkins/workspace/RecruitmentApp/app/build/outputs/apk/debug"
+def JOB_NAME = 'RecruitmentApp'
+def backup_folder = '/var/lib/jenkins/workspace/apkbackups'
 def Version_Number = "0.0.1.$BUILD_NUMBER"
 //def Console_Output_URL = "${JOB_URL}${BUILD_NUMBER}/console"
 def finalfile ="${backup_folder}/${JOB_NAME}_${currentBuild.number}.apk"
@@ -85,30 +85,11 @@ pipeline {
               echo "My password is '${windowspassword}'!"
           }
           // -pw 'KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV'
-        //  need to bind this password KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV
-        //  sh "mount -t cifs -o username=Administrator //172.31.46.59/Users/Administrator/Downloads/RecruitmentApp/Version1 /var/lib/jenkins/workspace/apkbackups/"
+          //  sh "mount -t cifs -o username=Administrator //172.31.46.59/Users/Administrator/Downloads/RecruitmentApp/Version1 /var/lib/jenkins/workspace/apkbackups/"
           echo "$timestamp"
         }
        }
 
-       stage ('Connet to Windows server') {
-        steps {
-          script {
-          withCredentials([string(credentialsId: 'windows_password', variable: 'windowspassword')]){
-            sh "sshpass -p '${windowspassword}' ssh -o StrictHostKeyChecking=no Administrator@3.133.89.186"
-        }
-       }
-    }
-       }
-        stage ('run cmd on windowss'){
-            steps {
-                script {
-                  withCredentials([string(credentialsId: 'windows_password', variable: 'windowspassword')]){
-                    sh "sshpass -p '${windowspassword}' ssh -o StrictHostKeyChecking=no Administrator@3.133.89.186 'powershell.exe netstat'"
-                  }
-                } 
-            }
-        }
 	 }
      post {
 	        success {
