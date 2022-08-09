@@ -79,7 +79,7 @@ pipeline {
             steps {
                 script {
                     //Reading data from csv file stored in github repo
-                    def inputCSVPath = 'app'
+                    def inputCSVPath = 'app/ip.csv'
                     def csvContent = readFile "${inputCSVPath}" 
                     echo ("CSV FILE PATH IS : ${inputCSVPath}")
                     echo ("CSV CONTENT IS: ${csvContent}") 
