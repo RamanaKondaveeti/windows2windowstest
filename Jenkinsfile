@@ -110,6 +110,8 @@ pipeline {
                     }
                 }
             }
+          }
+         }
        stage ('Deploy to Server') {
         steps {
            // Moving the generated apk file to our Deployment Server which runs on WINDOWS
@@ -145,6 +147,4 @@ pipeline {
 	        }
 	    }
 	}
-}
     }
-}
