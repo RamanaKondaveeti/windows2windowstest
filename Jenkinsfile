@@ -96,14 +96,14 @@ pipeline {
                                         echo fields[0] + ': ' + fields[1] + ': ' + fields[2] + ': ' + fields[3] + ': ' + fields[4];
                                     }
                                 }
+                        }
                     } else {
                         echo 'csv Not found.'
                     }
                  }
                }
             }
-       }  
-       stage ('Deploy to Server') {
+      stage ('Deploy to Server') {
         steps {
            // Moving the generated apk file to our Deployment Server which runs on WINDOWS
           echo "Copying apk to WINDOWS Server"
