@@ -5,6 +5,7 @@ def Version_Number = "0.0.1.$BUILD_NUMBER"
 def csv_path = "/var/lib/jenkins/workspace/csvfiletest/app"
 //def Console_Output_URL = "${JOB_URL}${BUILD_NUMBER}/console"
 def finalfile ="${backup_folder}/${JOB_NAME}_${currentBuild.number}.apk"
+def csvContent = readFile "${inputCSVPath}"
 
 pipeline {
 
