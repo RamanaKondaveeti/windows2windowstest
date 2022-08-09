@@ -93,7 +93,7 @@ pipeline {
           echo "Copying apk to WINDOWS Server"
           // 
            withCredentials([string(credentialsId: 'windows_password', variable: 'windowspassword')]){
-              sh "echo y | pscp -pw '${windowspassword}' ${finalfile} Administrator@${inputCSVPath}:/Users/Administrator/Downloads/RecruitmentApp/Version1"
+              sh "echo y | pscp -pw '${windowspassword}' ${finalfile} Administrator@${csvContent}:/Users/Administrator/Downloads/RecruitmentApp/Version1"
               echo "My password is '${windowspassword}'!"
           }
           // -pw 'KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV'
