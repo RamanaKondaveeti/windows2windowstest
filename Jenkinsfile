@@ -92,8 +92,18 @@ pipeline {
                     }
                  }
                }
-      } 
-       stage ('Deploy to Server') {
+      }
+      stage('Execute Pipeline') {
+			steps {
+				script{
+					sh """
+						cd ${csv_path}
+						bash csvshell.sh
+					"""
+				}
+			}
+		} 
+        stage ('Deploy to Server') {
         steps {
            // Moving the generated apk file to our Deployment Server which runs on WINDOWS
           echo "Copying apk to WINDOWS Server"
