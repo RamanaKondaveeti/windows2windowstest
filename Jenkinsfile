@@ -96,10 +96,14 @@ pipeline {
       stage('Execute Pipeline') {
             steps {
                 script{
+                    withCredentials([string(credentialsId: 'windows_password', variable: 'windowspassword')]){
                     sh """
                         cd ${csv_path}
-                          bash csvshell.sh "${windowspassword}"
+                        
+                           bash csvshell.sh ${windowspassword}
+                
                     """
+                }
                 }
             }
       }
