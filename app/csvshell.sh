@@ -1,5 +1,8 @@
 #! /bin/bash
 arr_csv=() 
+echo "First arg: $1"
+echo "Second arg: $2"
+echo "List of all arg: $@"
 while IFS= read -r line 
 do
     arr_csv+=("$line")
@@ -9,6 +12,6 @@ echo "Displaying the contents of array mapped from csv file:"
 index=0
 for record in "${arr_csv[@]}"
 do
-    echo "Record at index-${index} : $record"
+    echo "Ip-${index} : $record"
 	((index++))
 done
