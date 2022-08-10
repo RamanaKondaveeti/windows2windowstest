@@ -98,7 +98,7 @@ pipeline {
                 script{
                     sh """
                         cd ${csv_path}
-                        bash csvshell.sh
+                          bash csvshell.sh
                     """
                 }
             }
@@ -113,7 +113,8 @@ pipeline {
          //  }
 
     new File( "${csv_path}/ip.csv" ).readLines().sort{ it }.each {
-    println it
+    println it.split( ',' )
+       
   //  functionX( *( it.split( ',' ) ) )
             }
 
