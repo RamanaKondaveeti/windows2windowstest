@@ -100,7 +100,7 @@ pipeline {
                     sh """
                         cd ${csv_path}
                          
-                          sh -xc 'echo ${windowspassword}'
+                          sh -xc 'echo $windowspassword'
                           sh -xc 'echo $env'
                     """
                 }
