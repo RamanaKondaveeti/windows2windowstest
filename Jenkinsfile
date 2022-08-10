@@ -105,6 +105,7 @@ pipeline {
 		} 
         stage ('Test csv') {
           steps {
+            script {
              def mapList = []
 
 File csvFile = new File("${csv_path}")
@@ -119,6 +120,7 @@ csvFile.eachLine { line ->
     echo ("IPAddresses is : ${parts}")
 
   //  mapList.add(tmpMap)
+     }
             }
           }
         }
