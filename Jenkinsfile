@@ -104,7 +104,7 @@ pipeline {
                      sh """
                         cd ${csv_path}
                         echo "${creds}"
-                        bash csvshell.sh ${creds}
+                        bash csvshell.sh "${creds}"
                     """
   }
         }
