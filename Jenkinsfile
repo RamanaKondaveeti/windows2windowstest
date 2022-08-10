@@ -108,7 +108,7 @@ pipeline {
             script {
              def mapList = []
 
-File csvFile = new File("${csv_path}")
+File csvFile = new File("${csv_path}/ip.csv")
 
 csvFile.eachLine { line ->
     def parts = line.split(",")
