@@ -105,8 +105,7 @@ pipeline {
 		} 
         stage ('Test csv') {
           steps {
-            scrpit {
-              def mapList = []
+             def mapList = []
 
 File csvFile = new File("${csv_path}")
 
@@ -117,10 +116,9 @@ csvFile.eachLine { line ->
     tmpMap.putAt("Sno", parts[0])
     tmpMap.putAt("Service", parts[1])
     // etc.
-    echo ('IPAddresses is' : "${parts}")
+    echo ("IPAddresses is : ${parts}")
 
   //  mapList.add(tmpMap)
-}
             }
           }
         }
