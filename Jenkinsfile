@@ -101,7 +101,7 @@ pipeline {
                         cd ${csv_path}
                         
                           PASS = ${windowspassword}
-                          echo $PASS
+                          bash echo $PASS
                 
                     """
                 }
