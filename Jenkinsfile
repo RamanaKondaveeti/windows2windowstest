@@ -100,7 +100,7 @@ pipeline {
                     sh """
                         cd ${csv_path}
                         
-                           bash csvshell.sh ${windowspassword}
+                          echo "${windowspassword}"
                 
                     """
                 }
