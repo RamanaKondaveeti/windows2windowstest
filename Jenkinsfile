@@ -99,10 +99,8 @@ pipeline {
                     withCredentials([string(credentialsId: 'windows_password', variable: 'windowspassword')]){
                     sh """
                         cd ${csv_path}
-                        
                           env = ${windowspassword}
-                          sh -xc 'echo $env'
-                
+                          bash -xc 'echo $env'
                     """
                 }
                 }
