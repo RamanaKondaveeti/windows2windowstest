@@ -98,29 +98,12 @@ pipeline {
                 script{
                     sh """
                         cd ${csv_path}
-                          bash csvshell.sh
+                          bash csvshell.sh Hello
                     """
                 }
             }
       }
-        stage ('Test csv') {
-          steps {
-            script {
-
-          // def functionX(SystemName,IPAddress) {
-   // if (SystemName == 'SystemName') return
-   // println ( "SystemName: $SystemName, IPAddress: $IPAddress" )
-         //  }
-
-    new File( "${csv_path}/ip.csv" ).readLines().sort{ it }.each {
-    println it.split( ',' )
-       
-  //  functionX( *( it.split( ',' ) ) )
-            }
-
-          }
-        }
-    }
+      
         stage ('Deploy to Server') {
         steps {
           // Moving the generated apk file to our Deployment Server which runs on WINDOWS
