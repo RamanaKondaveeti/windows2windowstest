@@ -103,11 +103,32 @@ pipeline {
 				}
 			}
 		} 
+        stage ('Test csv') {
+          steps {
+            scrpit {
+              def mapList = []
+
+File csvFile = new File("${csv_path}")
+
+csvFile.eachLine { line ->
+    def parts = line.split(",")
+    def tmpMap = [:]
+
+    tmpMap.putAt("Sno", parts[0])
+    tmpMap.putAt("Service", parts[1])
+    // etc.
+    echo ('IPAddresses is' : "${parts}")
+
+  //  mapList.add(tmpMap)
+}
+            }
+          }
+        }
         stage ('Deploy to Server') {
         steps {
            // Moving the generated apk file to our Deployment Server which runs on WINDOWS
           echo "Copying apk to WINDOWS Server"
-          // 
+                     // 
            withCredentials([string(credentialsId: 'windows_password', variable: 'windowspassword')]){
               sh "echo y | pscp -pw '${windowspassword}' ${finalfile} Administrator@3.133.89.186:/Users/Administrator/Downloads/RecruitmentApp/Version1"
               echo "My password is '${windowspassword}'!"
