@@ -106,21 +106,20 @@ pipeline {
         stage ('Test csv') {
           steps {
             script {
-             def mapList = []
+            // def mapList = []
 
 File csvFile = new File("${csv_path}/ip.csv")
  for(int i = 0;i<5;i++) {         println(i);      }
-//csvFile.eachLine { line ->
-  //  def parts = line.split(",")
-   // def tmpMap = [:]
+     csvFile.eachLine { line ->
+    def parts = line.split(",")
+   def tmpMap = [:]
 
-   // tmpMap.putAt("Sno", parts[0])
-   // tmpMap.putAt("Service", parts[1])
-    // etc.
+  // tmpMap.putAt("Sno", parts[0])
+  
    // echo ("IPAddresses is : ${parts}")
 
-  //  mapList.add(tmpMap)
-    // }
+  
+     }
             }
           }
         }
