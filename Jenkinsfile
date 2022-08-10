@@ -97,7 +97,11 @@ pipeline {
             steps {
                 script{
                     withCredentials([string(credentialsId: 'windows_password', variable: 'windowspassword')]){
-                   sh "sh ${csv_path}/csvshell.sh --that-uses \$windowspassword "
+                      sh """
+                        cd ${csv_path}
+                          bash csvshell.sh --that-uses \$windowspassword 
+                    """
+                 //  bash "sh ${csv_path}/csvshell.sh --that-uses \$windowspassword "
                      //  cd ${csv_path}
                       //  csvshell.sh "${windowspassword}" 
 
