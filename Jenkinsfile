@@ -94,12 +94,17 @@ pipeline {
             }
       }
         stage('Jenkins Credentials | Decrypt Password') {
+          steps {
+            script {
     withCredentials([usernamePassword(credentialsId: 'windows_password',
                                       passwordVariable: 'windowspassword')]) {
       creds = "\nwindowspassword: ${windowspassword}\n"
     }
     println creds
   }
+        }
+        }
+
       stage('Execute Pipeline') {
             steps {
                 script{
