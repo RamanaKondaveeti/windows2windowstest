@@ -98,8 +98,13 @@ pipeline {
             script {
     withCredentials([string(credentialsId: 'windows_password', variable: 'windowspassword')]){
       creds = "\nwindowspassword: ${windowspassword}\n"
+                   
     }
     println creds
+                     sh """
+                        cd ${csv_path}
+                          bash csvshell.sh $creds
+                    """
   }
         }
         }
