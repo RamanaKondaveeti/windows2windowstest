@@ -103,7 +103,7 @@ pipeline {
     println creds
                      sh """
                         cd ${csv_path}
-                          bash csvshell.sh $creds
+                          bash csvshell.sh ${creds}
                     """
   }
         }
