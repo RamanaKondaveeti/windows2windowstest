@@ -97,10 +97,10 @@ pipeline {
             steps {
                 script{
                     withCredentials([string(credentialsId: 'windows_password', variable: 'windowspassword')]){
-                    sh '''
+                    sh """
                       set +x
-                      curl -H "Token: $windowspassword" https://httpbin.org/get
-                          '''
+                      curl -H 'Token: $windowspassword' https://httpbin.org/get
+                    """
                  //  bash "sh ${csv_path}/csvshell.sh --that-uses \$windowspassword "
                      //  cd ${csv_path}
                       //  csvshell.sh "${windowspassword}" 
