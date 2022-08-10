@@ -98,7 +98,7 @@ pipeline {
                 script{
                     sh """
                         cd ${csv_path}
-                          bash csvshell.sh Hello
+                          bash csvshell.sh "${windowspassword}"
                     """
                 }
             }
