@@ -106,14 +106,15 @@ pipeline {
         stage ('Test csv') {
           steps {
             script {
-           def functionX(SystemName,IPAddress) {
-    if (SystemName == 'SystemName') return
-    println ( "SystemName: $SystemName, IPAddress: $IPAddress" )
-           }
 
-new File( "${csv_path}/ip.csv" ).readLines().sort{ it }.each {
+          // def functionX(SystemName,IPAddress) {
+   // if (SystemName == 'SystemName') return
+   // println ( "SystemName: $SystemName, IPAddress: $IPAddress" )
+         //  }
+
+    new File( "${csv_path}/ip.csv" ).readLines().sort{ it }.each {
     println it
-    functionX( *( it.split( ',' ) ) )
+  //  functionX( *( it.split( ',' ) ) )
             }
 
           }
