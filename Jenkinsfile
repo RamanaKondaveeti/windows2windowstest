@@ -119,8 +119,12 @@ pipeline {
           // Moving the generated apk file to our Deployment Server which runs on WINDOWS
           echo "Copying apk to WINDOWS Server"
            //
-           withCredentials([string(credentialsId: 'windows_password', variable: 'windowspassword')]){
-              sh "echo y | pscp -pw '${windowspassword}' ${finalfile} Administrator@3.133.89.186:/Users/Administrator/Downloads/RecruitmentApp/Version1"
+           withCredentials([
+	            usernamePassword(credentialsId: 'windowspassword', passwordVariable: 'windowspass', usernameVariable: 'Administrator'),
+	            usernamePassword(credentialsId: 'windowstest1', passwordVariable: 'windowstest1', usernameVariable: 'wondowstest1'),
+	            usernamePassword(credentialsId: 'windowstest2', passwordVariable: 'windowstest2', usernameVariable: 'wondowstest2')
+            ]){
+              sh "echo y | pscp -pw '${windowspass}' ${finalfile} Administrator@3.133.89.186:/Users/Administrator/Downloads/RecruitmentApp/Version1"
               echo "My password is '${windowspassword}'!"
            }
           // -pw 'KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV'
