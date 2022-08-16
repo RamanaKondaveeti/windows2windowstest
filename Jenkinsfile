@@ -97,7 +97,7 @@ pipeline {
           steps {
             script {
     withCredentials([usernamePassword(credentialsId: 'windowspassword', passwordVariable: 'windowspass', usernameVariable: 'Administrator')]){
-      creds = "${windowspassword}"
+      creds = "${windowspass}"
                    
     }
     println creds
