@@ -96,8 +96,9 @@ pipeline {
         stage('Jenkins Credentials | Decrypt Password') {
           steps {
             script {
-    withCredentials([string(credentialsId: 'windows_password', variable: 'windowspassword')]){
-      creds = "${windowspassword}"
+    withCredentials([string(credentialsId: 'windows_password', variable: 'windowspassword')(credentialsId: 'windowstest1', variable: 'windowstest1')
+                            (credentialsId: 'windowstest2', variable: 'windowstest2')]){
+      creds = "${windowspassword}\n${windowstest1}\n${windowstest2}"
                    
     }
     println creds
@@ -106,28 +107,10 @@ pipeline {
                         echo "${creds}"
                         bash csvshell.sh "${creds}"
                     """
-  }
-        }
-        }
-
-      stage('Execute Pipeline') {
-            steps {
-                script{
-                    withCredentials([string(credentialsId: 'windows_password', variable: 'windowspassword')]){
-                     sh """
-                      set +x
-                      curl -H 'Token: "${windowspassword}"' https://httpbin.org/get
-                    """
-                 //  bash "sh ${csv_path}/csvshell.sh --that-uses \$windowspassword "
-                     //  cd ${csv_path}
-                      //  csvshell.sh "${windowspassword}" 
-
-                        
-                    }
-                }
+                  }
             }
-      }
-      
+        }
+        
         stage ('Deploy to Server') {
         steps {
           // Moving the generated apk file to our Deployment Server which runs on WINDOWS
