@@ -37,20 +37,21 @@ pipeline {
         steps {
           // Moving the generated apk file to our Deployment Server which runs on WINDOWS
           echo "Copying file from windows server to WINDOWS Server"
-           //
+           script {
            withCredentials([
 	            usernamePassword(credentialsId: 'windowspassword', passwordVariable: 'windowspass', usernameVariable: 'Administrator'),
 	            usernamePassword(credentialsId: 'windowstest1', passwordVariable: 'windowstest1', usernameVariable: 'wondowstest1'),
 	            usernamePassword(credentialsId: 'windowstest2', passwordVariable: 'windowstest2', usernameVariable: 'wondowstest2')
             ]){
-               sh "sshpass -p '${windowspass}' ssh -o StrictHostKeyChecking=no ssh Administrator@3.133.89.186"
+              sh "sshpass -p '${windowspass}' ssh -o StrictHostKeyChecking=no ssh Administrator@3.133.89.186"
             }
           // -pw 'KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV'
           //windows ip : 3.133.89.186
           //  sh "mount -t cifs -o username=Administrator //172.31.46.59/Users/Administrator/Downloads/RecruitmentApp/Version1 /var/lib/jenkins/workspace/apkbackups/"
           echo "$timestamp"
+           }
         }
-        }
+       }
 
      }
      post {
