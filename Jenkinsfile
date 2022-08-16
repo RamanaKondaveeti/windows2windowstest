@@ -101,7 +101,7 @@ pipeline {
 	        usernamePassword(credentialsId: 'windowstest1', passwordVariable: 'windowstest1', usernameVariable: 'wondowstest1'),
 	        usernamePassword(credentialsId: 'windowstest2', passwordVariable: 'windowstest2', usernameVariable: 'wondowstest2')
             ]){
-      creds = "${windowspass}${windowstest1}${windowstest2}"
+      creds = "${windowspass}\n${windowstest1}\n${windowstest2}"
                    
     }
     println creds
