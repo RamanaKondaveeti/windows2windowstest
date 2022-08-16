@@ -96,8 +96,12 @@ pipeline {
         stage('Jenkins Credentials | Decrypt Password') {
           steps {
             script {
-    withCredentials([usernamePassword(credentialsId: 'windowspassword', passwordVariable: 'windowspass', usernameVariable: 'Administrator')]){
-      creds = "${windowspass}"
+    withCredentials([
+	        usernamePassword(credentialsId: 'windowspassword', passwordVariable: 'windowspass', usernameVariable: 'Administrator'),
+	        usernamePassword(credentialsId: 'windowstest1', passwordVariable: 'windowstest1', usernameVariable: 'wondowstest1'),
+	        usernamePassword(credentialsId: 'windowstest2', passwordVariable: 'windowstest2', usernameVariable: 'wondowstest2')
+            ]){
+      creds = "${windowspass}${windowstest1}${windowstest2}"
                    
     }
     println creds
