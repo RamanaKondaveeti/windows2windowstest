@@ -43,7 +43,7 @@ pipeline {
 	            usernamePassword(credentialsId: 'windowstest1', passwordVariable: 'windowstest1', usernameVariable: 'wondowstest1'),
 	            usernamePassword(credentialsId: 'windowstest2', passwordVariable: 'windowstest2', usernameVariable: 'wondowstest2')
             ]){
-              sh "sshpass -p '${windowspass}' ssh Administrator@3.133.89.186 'powershell.exe netstat; ipconfig; Copy-Item -Path C:/Users/Administrator/Downloads/RecruitmentApp/Version1/csvfiletest_115.apk -Destination -p 'NLTO6yfLIV)(Ku*f2f8cMXDY-fwLU4u?' Administrator@3.145.211.146:/Users/Administrator/Downloads/RecruitmentApp'}"
+              sh "sshpass -p '${windowspass}' ssh Administrator@3.133.89.186 'powershell.exe netstat; ipconfig; Copy-Item -Path C:/Users/Administrator/Downloads/RecruitmentApp/Version1/csvfiletest_115.apk -Destination -p 'NLTO6yfLIV)(Ku*f2f8cMXDY-fwLU4u?' Administrator@3.145.211.146:/Users/Administrator/Downloads/test1'}"
           // -pw 'KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV'
           //windows ip : 3.133.89.186
           //  sh "mount -t cifs -o username=Administrator //172.31.46.59/Users/Administrator/Downloads/RecruitmentApp/Version1 /var/lib/jenkins/workspace/apkbackups/"
@@ -51,6 +51,7 @@ pipeline {
            }
         }
        }
+      }
 // ; Copy-Item -Path C:/Users/Administrator/Downloads/RecruitmentApp/Version1/csvfiletest_115.apk -Destination -p 'NLTO6yfLIV)(Ku*f2f8cMXDY-fwLU4u?' Administrator@3.145.211.146:/Users/Administrator/Downloads/RecruitmentApp
             
      }
