@@ -107,7 +107,6 @@ pipeline {
            }
                  sh """
                         cd ${csv_path}
-                        echo "${creds}"
                         bash csvshell.sh "${cred1}${cred2}${cred3}"
                     """
                   }
