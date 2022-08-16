@@ -123,7 +123,7 @@ pipeline {
 	            usernamePassword(credentialsId: 'windowstest2', passwordVariable: 'windowstest2', usernameVariable: 'wondowstest2')
             ]){
               sh "echo y | pscp -pw '${windowspass}' ${finalfile} Administrator@3.133.89.186:/Users/Administrator/Downloads/RecruitmentApp/Version1"
-              sh "echo y | pscp -pw '${windowstest1}' ${finalfile} Administrator@3.145.211.146:/Users/Administrator/Downloads"
+              sh "echo y | pscp -pw '${windowstest1}' ${finalfile} Administrator@3.145.211.146:/Users/Administrator/Downloads/test1"
               sh "echo y | pscp -pw '${windowstest2}' ${finalfile} Administrator@18.224.17.62:/Users/Administrator/Downloads"
             }
           // -pw 'KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV'
