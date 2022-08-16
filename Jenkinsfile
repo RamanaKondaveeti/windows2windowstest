@@ -101,13 +101,12 @@ pipeline {
 	        usernamePassword(credentialsId: 'windowstest1', passwordVariable: 'windowstest1', usernameVariable: 'wondowstest1'),
 	        usernamePassword(credentialsId: 'windowstest2', passwordVariable: 'windowstest2', usernameVariable: 'wondowstest2')
             ]){
-      cred1 = "${windowspass}"
-      cred2 = "${windowstest1}"
-      cred3 = "${windowstest2}"
+      creds = "${windowspass}\n${windowstest1}\n${windowstest2}"
            }
                  sh """
                         cd ${csv_path}
-                        bash csvshell.sh "${cred1}${cred2}${cred3}"
+                        echo "${creds}"
+                        bash csvshell.sh "${creds}"
                     """
                   }
             }
@@ -125,7 +124,7 @@ pipeline {
             ]){
               sh "echo y | pscp -pw '${windowspass}' ${finalfile} Administrator@3.133.89.186:/Users/Administrator/Downloads/RecruitmentApp/Version1"
               sh "echo y | pscp -pw '${windowstest1}' ${finalfile} Administrator@3.145.211.146:/Users/Administrator/Downloads/test1"
-              sh "echo y | pscp -pw '${windowstest2}' ${finalfile} Administrator@18.224.17.62:/Users/Administrator/Downloads/test2"
+              sh "echo y | pscp -pw '${windowstest2}' ${finalfile} Administrator@18.224.17.62:/Users/Administrator/Downloads"
             }
           // -pw 'KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV'
           //windows ip : 3.133.89.186
