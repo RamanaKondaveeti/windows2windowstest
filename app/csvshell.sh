@@ -2,6 +2,7 @@
 arr_csv=() 
 echo "First arg: $1"
 echo "Second arg: $2"
+echo "Third arg: $3"
 echo "List of all arg: $@"
 while IFS= read -r line 
 do
