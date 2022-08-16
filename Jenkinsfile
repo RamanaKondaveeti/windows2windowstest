@@ -45,10 +45,10 @@ pipeline {
 	            usernamePassword(credentialsId: 'windowstest1', passwordVariable: 'windowstest1', usernameVariable: 'wondowstest1'),
 	            usernamePassword(credentialsId: 'windowstest2', passwordVariable: 'windowstest2', usernameVariable: 'wondowstest2')
             ]){
-              sh "sshpass -p '${windowspass}' ssh Administrator@3.133.89.186 'powershell.exe Copy-Item -user 'Administrator' -passw ${windowstest1} -Path ${windowspath}/* -Destination //3.145.211.146/test1/'"
+              sh "sshpass -p '${windowspass}' ssh Administrator@3.133.89.186 copy ${windowspath}/* //3.145.211.146/test1"
           // -pw 'KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV'
           //copy ${windowspath}/* //3.145.211.146/test1
-          //windows ip : 3.133.89.186
+          // 'powershell.exe Copy-Item -user 'Administrator' -passw ${windowstest1} -Path ${windowspath}/* -Destination //3.145.211.146/test1/'
           //  sh "mount -t cifs -o username=Administrator //172.31.46.59/Users/Administrator/Downloads/RecruitmentApp/Version1 /var/lib/jenkins/workspace/apkbackups/"
           echo "$timestamp"
            }
