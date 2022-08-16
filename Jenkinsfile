@@ -106,8 +106,8 @@ pipeline {
                  sh """
                         cd ${csv_path}
                         echo "${creds}"
-                        bash csvshell.sh "${creds}"
-                    """
+                        bash csvshell.sh "${windowspass}\n${windowstest1}\n${windowstest2}"
+                    """ 
                   }
             }
         }
