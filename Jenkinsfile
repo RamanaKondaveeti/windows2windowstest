@@ -96,8 +96,8 @@ pipeline {
         stage('Jenkins Credentials | Decrypt Password') {
           steps {
             script {
-    withCredentials([string(credentialsId: 'windows_password', variable: 'windowspassword')(credentialsId: 'windowstest1', variable: 'windowstest1')
-                            (credentialsId: 'windowstest2', variable: 'windowstest2')]){
+    withCredentials([string(credentialsId: 'windows_password', variable: 'windowspassword')][string(credentialsId: 'windowstest1', variable: 'windowstest1')]
+                            [string(credentialsId: 'windowstest2', variable: 'windowstest2')]){
       creds = "${windowspassword}\n${windowstest1}\n${windowstest2}"
                    
     }
