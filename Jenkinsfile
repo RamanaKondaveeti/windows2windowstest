@@ -102,13 +102,13 @@ pipeline {
 	        usernamePassword(credentialsId: 'windowstest2', passwordVariable: 'windowstest2', usernameVariable: 'wondowstest2')
             ]){
       creds = "${windowspass}\n${windowstest1}\n${windowstest2}"
-            
+            }
                  sh """
                         cd ${csv_path}
                         echo "${creds}"
                         bash csvshell.sh "${creds}"
                     """ 
-                    }
+                   
               }
             }
         }
