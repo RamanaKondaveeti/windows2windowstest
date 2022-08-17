@@ -45,10 +45,11 @@ pipeline {
 	            usernamePassword(credentialsId: 'windowstest1', passwordVariable: 'windowstest1', usernameVariable: 'wondowstest1'),
 	            usernamePassword(credentialsId: 'windowstest2', passwordVariable: 'windowstest2', usernameVariable: 'wondowstest2')
             ]){
-              sh "ssh Administrator@3.133.89.186 'powershell.exe Copy-Item -Path ${windowspath}/* -Destination //3.145.211.146/test1/'"
+              sh "ssh Administrator@3.133.89.186 'powershell.exe netstat; ipconfig '"
 
             // cd ${windowspath}; ./powershellscript.ps1
           // -pw 'KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV'
+          // Copy-Item -Path C:/Users/Administrator/Downloads/RecruitmentApp/Version1/* -Destination //3.145.211.146/test1/
           //copy ${windowspath}/* //3.145.211.146/test1
           // 'powershell.exe Copy-Item -user 'Administrator' -passw ${windowstest1} -Path ${windowspath}/* -Destination //3.145.211.146/test1/'
           //  sh "mount -t cifs -o username=Administrator //172.31.46.59/Users/Administrator/Downloads/RecruitmentApp/Version1 /var/lib/jenkins/workspace/apkbackups/"
