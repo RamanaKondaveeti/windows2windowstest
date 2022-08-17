@@ -44,8 +44,8 @@ pipeline {
 	            usernamePassword(credentialsId: 'windowspassword', passwordVariable: 'windowspass', usernameVariable: 'Administrator'),
 	            usernamePassword(credentialsId: 'windowstest1', passwordVariable: 'windowstest1', usernameVariable: 'wondowstest1'),
 	            usernamePassword(credentialsId: 'windowstest2', passwordVariable: 'windowstest2', usernameVariable: 'wondowstest2')
-            ]){
-              sh "sshpass -p '${windowspass}' ssh Administrator@3.133.89.186 'powershell.exe copy ${windowspath}/* //3.145.211.146/test1'"
+            ]){opy ${wi
+              sh "sshpass -p '${windowspass}' ssh Administrator@3.133.89.186 'powershell.exe & ./powershellscript.ps1'"
 
 
           // -pw 'KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV'
