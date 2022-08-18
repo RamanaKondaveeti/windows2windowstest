@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     GIT_BRANCH=sh(returnStdout: true, script: 'git symbolic-ref --short HEAD').trim()
-                    currentBuild.setDisplayName("AndroidApp-#${currentBuild.number} [" + GIT_BRANCH + "]")
+                    currentBuild.setDisplayName("WindowsMultiDeploy-#${currentBuild.number} [" + GIT_BRANCH + "]")
                     sh "export GIT_BRANCH=$GIT_BRANCH"
                 }
             }
@@ -47,18 +47,12 @@ pipeline {
             ]){
               sh "sshpass -p '${windowspass}' ssh Administrator@3.133.89.186 'powershell.exe cd ${windowspath}; ./powershellscript.ps1'"
 
-            // cd ${windowspath}; ./powershellscript.ps1
-          // -pw 'KSVoTE%3n3kiN=Jn36;ZHEdHm(JG*ptV'
-          // Copy-Item -Path C:/Users/Administrator/Downloads/RecruitmentApp/Version1/* -Destination //3.145.211.146/test1/
-          //copy ${windowspath}/* //3.145.211.146/test1
-          // 'powershell.exe Copy-Item -user 'Administrator' -passw ${windowstest1} -Path ${windowspath}/* -Destination //3.145.211.146/test1/'
-          //  sh "mount -t cifs -o username=Administrator //172.31.46.59/Users/Administrator/Downloads/RecruitmentApp/Version1 /var/lib/jenkins/workspace/apkbackups/"
-          echo "$timestamp"
+              echo "$timestamp"
            }
         }
        }
       }
-// Righ click on the folders and give full control to folder sharing--> Advanced sharing --> permissions --full control
+// Right click on the folders and give full control to folder sharing--> Advanced sharing --> permissions --full control
             
      }
      post {
