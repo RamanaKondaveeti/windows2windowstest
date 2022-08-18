@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     GIT_BRANCH=sh(returnStdout: true, script: 'git symbolic-ref --short HEAD').trim()
-                    currentBuild.setDisplayName("WindowsMultiDeploy-#${currentBuild.number} [" + GIT_BRANCH + "]")
+                    currentBuild.setDisplayName("WindowsMultiDeploy-#${currentBuild.number}")
                     sh "export GIT_BRANCH=$GIT_BRANCH"
                 }
             }
@@ -63,7 +63,7 @@ pipeline {
 	            usernamePassword(credentialsId: 'windowstest2', passwordVariable: 'windowstest2', usernameVariable: 'wondowstest2')
             ]){
               sh "sshpass -p '${windowspass}' ssh Administrator@3.133.89.186 'powershell.exe cd ${windowspath}; ./powershellscript.ps1'"
-              echo "Copy new build folder Completed"
+              echo "Copying new build folder Completed"
               echo "$timestamp"
            }
         }
