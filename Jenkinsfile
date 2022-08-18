@@ -35,7 +35,7 @@ pipeline {
                 echo "Running Tests if Any"
             }
         }
-      stage ('Copy from windows2windows') {
+      stage ('Zip backup') {
         steps {
           // Moving the generated apk file to our Deployment Server which runs on WINDOWS
           echo "Copying file from windows server to WINDOWS Server"
@@ -45,8 +45,25 @@ pipeline {
 	            usernamePassword(credentialsId: 'windowstest1', passwordVariable: 'windowstest1', usernameVariable: 'wondowstest1'),
 	            usernamePassword(credentialsId: 'windowstest2', passwordVariable: 'windowstest2', usernameVariable: 'wondowstest2')
             ]){
-              sh "sshpass -p '${windowspass}' ssh Administrator@3.133.89.186 'powershell.exe cd ${windowspath}; ./backupsscript.ps1; ./powershellscript.ps1'"
-
+              sh "sshpass -p '${windowspass}' ssh Administrator@3.133.89.186 'powershell.exe cd ${windowspath}; ./backupsscript.ps1'"
+              echo "Zipping of previous folder Completed"
+              echo "$timestamp"
+           }
+        }
+       }
+      }
+      stage ('Copy folder') {
+        steps {
+          // Moving the generated apk file to our Deployment Server which runs on WINDOWS
+          echo "Copying file from windows server to WINDOWS Server"
+           script {
+           withCredentials([
+	            usernamePassword(credentialsId: 'windowspassword', passwordVariable: 'windowspass', usernameVariable: 'Administrator'),
+	            usernamePassword(credentialsId: 'windowstest1', passwordVariable: 'windowstest1', usernameVariable: 'wondowstest1'),
+	            usernamePassword(credentialsId: 'windowstest2', passwordVariable: 'windowstest2', usernameVariable: 'wondowstest2')
+            ]){
+              sh "sshpass -p '${windowspass}' ssh Administrator@3.133.89.186 'powershell.exe cd ${windowspath}; ./powershellscript.ps1'"
+              echo "Copy new build folder Completed"
               echo "$timestamp"
            }
         }
